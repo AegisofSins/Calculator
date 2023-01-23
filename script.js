@@ -6,13 +6,25 @@
 
 let display = 0;
 let total = 0;
+ 
+function add() {
+    let num1 = display;
+    console.log(num1);
 
-//Num is the number that is being pressed. This function takes that number and adds it to the number that is currently being displayed. This can be zero or the last value that was calculated. 
-function add() {   
-    return display += display;
 }
 
-//Takes the display value and substracts it with the number that was pressed. 
-function subtract(num) {
-    return display -= num;
+function subtract() {
+    
+}
+function divide () {
+
+}
+function multiply() {
+
+}
+
+//Equal button which takes the values and applies the given function
+function operate () {
+
+    
 }

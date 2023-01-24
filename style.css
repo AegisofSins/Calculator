@@ -6,31 +6,38 @@ body {
 .display {
     display: flex;
     flex-direction: column;
+    margin: 10px;
 }
 
-.output {
+.screen {
     display: flex;
-    justify-content: end;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    padding: 3px;
     width: 250px;
-    height: 40px;
+    height: 50px;
     border: 2px solid black;
     font-weight: bold;
     font-size: 20px;
 }
+
+.secondOutput {
+    font-weight: 200;
+    font-size: 10x;
+
+}
 .calc {
     display: flex;
-    align-content: space-around;
-    height: 250px;
-    width: fit-content;
+    height: 245px;
 }
 
 .numbers {
     display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    grid-template: repeat(4, 1fr) / repeat(3, 1fr);
     column-gap: 5px;
-    row-gap: 5px;
-    align-items: center;
+    align-items: end;
 }
 .numbers > button {
     width: 50px;
@@ -45,7 +52,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     margin-left: 5px;
-    height: 250px;
+    height: 100%;
     width: 50px;
 }
 
@@ -53,7 +60,7 @@ body {
     height: 50px;
     width: 70px;
 }
-.equal {
+.equal, .operand {
     margin-top: 10px;
 }
 

@@ -23,7 +23,7 @@ operators.forEach((operate) =>
   operate.addEventListener('click', () => setOperation(operate.textContent))
 );
 
-equal.addEventListener('click', () => calculate(currentOperation)
+equal.addEventListener('click', () => evaluate()
 );
 
 clear.addEventListener('click', () => reset()
@@ -35,6 +35,7 @@ function reset(){
   currentOperation = null;
   secondOutput.textContent = '';
   output.textContent = '';
+  sum = null;
 }
 
 function display(number) {
@@ -49,7 +50,7 @@ function updateDisplay (){
 
 function setOperation (operator){
     if (currentOperation != null){
-      calculate(currentOperation)
+      evaluate();
     } else {
     firstOperand = output.textContent;
     currentOperation = operator
@@ -58,56 +59,63 @@ function setOperation (operator){
     }
     }
 
-function add(a,b ) {
-  sum = a+b;
-  updateDisplay()
-  return sum;
-}
-
-function subtract(a,b) {
-  sum = a-b;
-  updateDisplay();
-  return sum; 
-}
-
-function divide (a,b) {
-  sum = a/b;
-  updateDisplay();
-  return sum;
-}
-
-function multiply(a,b) {
-  sum = a*b;
-  updateDisplay();
-  return sum;
-}
-
+    
 function evaluate(){
+  if(sum != null && sum == output.textContent) {
+    output.textContent = ''
+    secondOutput.textContent = `${sum} ${currentOperation}`
+  } else if(sum != null) {
     a = sum;
-    output.textContent = '';
-    return a;
+    b = parseInt(output.textContent, 10);
+    calculate(currentOperation);
+  } else {
+    a = parseInt(firstOperand,10)
+    b = parseInt(output.textContent, 10)
+    calculate(currentOperation);
+  }
 }
 
 //Equal button which takes the values and applies the given function
 function calculate (currentOperation) {
-  if(sum != null) evaluate();
-  a = parseInt(firstOperand,10)
-  b = parseInt(output.textContent, 10)
   
   switch(currentOperation){
     case '+':
       add(a,b)
       break;
-    case '-':
-      subtract(a,b)
-      break; 
+      case '-':
+        subtract(a,b)
+        break; 
     case '*':
       multiply(a,b)
       break;
-    case '/':
-      divide(a,b)
-      break;
-    default:
+      case '/':
+        divide(a,b)
+        break;
+        default:
       return;
+    }
   }
+  
+function add(a,b ) {
+    sum = a+b;
+    updateDisplay();
+    return sum;
+}
+  
+function subtract(a,b) {
+    sum = a-b;
+    updateDisplay();
+    return sum; 
+}
+  
+function divide (a,b) {
+    sum = a/b;
+    updateDisplay();
+    return sum;
+}
+  
+function multiply(a,b) {
+    sum = a*b;
+    updateDisplay();
+    return sum;
 }
